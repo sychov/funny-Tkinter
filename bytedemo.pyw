@@ -12,6 +12,7 @@ COLORS = ('#fff5f5', '#f5fff5', '#f5f5ff', '#ffffee')
 
 
 class BitWidget(Frame):
+    """Класс для виджета из 1 бита."""
 
     def __init__(self, master, number, color='white'):
         Frame.__init__(self, master, relief=GROOVE)
@@ -25,6 +26,7 @@ class BitWidget(Frame):
         self.info.pack(pady=2)
 
     def click(self, event):
+        """Изменить данные после клика мыши."""
         if self.value:
             self.value = 0
         else:
@@ -35,11 +37,13 @@ class BitWidget(Frame):
 
 
     def set(self, value):
+        """Установить значение бита принудительно."""
         self.value = value
         self.label['text'] = str(self.value)
 
 
 class HexWidget(Frame):
+    """Класс для виджета из одной шестнадцатиричной цифры."""
 
     def __init__(self, master, number, color='white'):
         Frame.__init__(self, master, relief=GROOVE)
@@ -52,6 +56,7 @@ class HexWidget(Frame):
 
 
     def click(self, event):
+        """Увеличить значение после клика левой кнопки мыши."""
         self.value += 1
         if self.value > 15:
             self.value = 0
@@ -61,6 +66,7 @@ class HexWidget(Frame):
 
 
     def click2(self, event):
+        """Уменьшить значение после клика правой кнопки мыши."""
         self.value -= 1
         if self.value < 0:
             self.value = 15
@@ -70,11 +76,13 @@ class HexWidget(Frame):
 
 
     def set(self, value):
+        """Установить значение принудительно."""
         self.value = value
         self.label['text'] = HEX[self.value]
 
 
 class DecWidget(Frame):
+    """Класс для десятичного представления значения."""
 
     def __init__(self, master):
         Frame.__init__(self, master, relief=GROOVE)
@@ -132,7 +140,7 @@ def reset():
     change_hex()
     change_str()
 
-#---------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 
 root = Tk()
 root.title(u'hex/dec/bin: просто и наглядно')
